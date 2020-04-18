@@ -1,14 +1,16 @@
 name: Test site for publicly known js vulnerabilities
 
 on: push
+env:
+ TARGET: https://hackerone.com 
 jobs:
-  # security:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Test for public javascript library vulnerabilities 
-  #       uses: lirantal/is-website-vulnerable@master
-  #       with:
-  #         scan-url: "https://hackerone.com"
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test for public javascript library vulnerabilities 
+        uses: lirantal/is-website-vulnerable@master
+        with:
+          scan-url: $TARGET
   zap_scan:
     runs-on: ubuntu-latest
     name: Scan the webapplication
@@ -22,6 +24,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          target: 'https://hackerone.com'
+          target: $TARGET
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
