@@ -10,7 +10,7 @@ jobs:
       - name: Test for public javascript library vulnerabilities 
         uses: lirantal/is-website-vulnerable@master
         with:
-          scan-url: echo $TARGET
+          scan-url: ${{ env.TARGET }}
   zap_scan:
     runs-on: ubuntu-latest
     name: Scan the webapplication
@@ -24,6 +24,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           docker_name: 'owasp/zap2docker-stable'
-          target: echo $TARGET
+          target: ${{ env.TARGET }}
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
