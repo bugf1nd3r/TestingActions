@@ -38,7 +38,7 @@ jobs:
       source env/bin/activate
       python3.7 openredirex.py -u "https://${{ env.TARGET }}/?url=FUZZ" -p payloads.txt --keyword FUZZ
    - name : Multiprocessing(Parallel)Subdomain Detect Script
-     run :
+     run : |
       git clone https://github.com/aboul3la/Sublist3r.git
       cd Sublist3r
       sudo pip install -r requirements.txt
