@@ -41,7 +41,7 @@ jobs:
      with:
        token: ${{ secrets.GITHUB_TOKEN }}
        title: ${{ env.TARGET }}
-       body:  html body <b>hellp </b>
+       body:  html body <b>hell0 </b>
   
 
   # security:
