@@ -15,6 +15,9 @@ jobs:
      uses: actions/setup-python@v1
      with:
         python-version: ${{ matrix.python-version }}
+   - name : checking git version
+   - run : |
+      git --version  
    - name: Download from devanshbatham
    - run: |
       git clone https://github.com/devanshbatham/OpenRedireX
