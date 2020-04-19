@@ -35,16 +35,12 @@ jobs:
       python3.7 openredirex.py -u "${{ env.TARGET }}"/?url=FUZZ -p payloads.txt --keyword FUZZ
    #- name : checking output of step1
    #  run : ${{steps.step1.outputs}}
-   - name: Git Creation Demo     
-     uses: bryan-nice/git-issue-creation@master
-     env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       GITHUB_COMMIT_SHA: ${{ github.sha }}
-       GITHUB_OWNER: 'bugf1nd3r' 
-       #GITHUB_REPO_OWNER: 'bugf1nd3r'
-       GITHUB_REPO_NAME: 'TestingActions'
-       GITHUB_ISSUE_TITLE: Testing ${{ env.TARGET }}
-       GITHUB_ISSUE_BODY: 'Demo''ing Git Issue Creation'
+   - name: oction-create-issue     
+     uses: maxkomarychev/oction-create-issue@v0.7.1
+     id: my_step_id
+     with:
+       token: ${{ secrets.GITHUB_TOKEN }}
+       title: ${{ env.TARGET }}
   
 
   # security:
