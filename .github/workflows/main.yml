@@ -18,6 +18,9 @@ jobs:
    - name : checking git version
      run : |
       git --version  
+   - name : installing dependencies - aiohttp
+     run : |
+      pip3 install aiohttp
    - name: Download from devanshbatham
      run: |
       git clone https://github.com/devanshbatham/OpenRedireX
