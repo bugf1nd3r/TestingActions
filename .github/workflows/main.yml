@@ -33,8 +33,38 @@ jobs:
       python3 -m venv env
       source env/bin/activate
       python3.7 openredirex.py -u "${{ env.TARGET }}"/?url=FUZZ -p payloads.txt --keyword FUZZ
-   - name : checking output of step1
-     run : ${{steps.step1.outputs}}
+   #- name : checking output of step1
+   #  run : ${{steps.step1.outputs}}
+   - name: oction-create-issue
+     uses: maxkomarychev/oction-create-issue@v0.7.1
+     with:
+       # Token to authenticate the request
+
+       token: ${{ secrets.GITHUB_TOKEN }}
+       # owner parameter
+
+       owner: bugf1nd3r
+       # repo parameter
+
+       repo: master
+       # The title of the issue.
+
+       title: results of ${{ env.TARGET }}
+       # The contents of the issue.
+
+       body: Testing
+       # Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is deprecated.**_
+
+       assignee: bugf1nd3r
+       # The `number` of the milestone to associate this issue with. _NOTE: Only users with push access can set the milestone for new issues. The milestone is silently dropped otherwise._
+
+       #milestone: # optional
+       # Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
+
+       #labels: # optional
+       # Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
+
+       #assignees: # optional
   
 
   # security:
