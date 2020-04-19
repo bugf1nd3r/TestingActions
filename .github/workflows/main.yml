@@ -5,6 +5,7 @@ env:
  TARGET: https://hackerone.com 
 jobs:
  download_others_repo:
+  name: OpenRedireX - Asynchronous Open redirect Fuzzer for Humans
   
   runs-on: [ubuntu-latest]
   strategy:
@@ -27,7 +28,7 @@ jobs:
       cd OpenRedireX
       python3 -m venv env
       source env/bin/activate
-      python3.7 openredirex.py -u "${{ env.TARGET }}" -p payloads.txt --keyword FUZZ
+      python3.7 openredirex.py -u "${{ env.TARGET }}"/?url=FUZZ -p payloads.txt --keyword FUZZ
   
 
   # security:
