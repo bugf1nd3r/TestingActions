@@ -34,7 +34,7 @@ jobs:
       source env/bin/activate
       python3.7 openredirex.py -u "${{ env.TARGET }}"/?url=FUZZ -p payloads.txt --keyword FUZZ
    - name : checking output of step1
-     run : ${{steps.step1.output}}
+     run : ${{steps.step1.outputs}}
   
 
   # security:
