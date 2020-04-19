@@ -16,10 +16,10 @@ jobs:
      with:
         python-version: ${{ matrix.python-version }}
    - name : checking git version
-   - run : |
+     run : |
       git --version  
    - name: Download from devanshbatham
-   - run: |
+     run: |
       git clone https://github.com/devanshbatham/OpenRedireX
       cd OpenRedireX
       python3 -m venv env
