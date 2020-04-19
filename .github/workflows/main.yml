@@ -1,8 +1,9 @@
+env:
+ TARGET: https://bugcrowd.com 
 name: Testing ${{env.TARGET}}
 
 on: push
-env:
- TARGET: https://bugcrowd.com 
+
 jobs:
  download_others_repo:
   name: OpenRedireX - Asynchronous Open redirect Fuzzer for Humans
