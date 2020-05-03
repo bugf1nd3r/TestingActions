@@ -6,7 +6,7 @@ env:
  COMP_NAME: volusion
  GWEN_PATH: gwen001
  GIT_GRABER: gitgraber
- SCOPE: '*'
+ SCOPE: ''
  RUN_GITGRABBER: false 
  
 on: 
