@@ -1,13 +1,6 @@
-name: GitHub Recon 
+name: Testing 
 
-env:
- DOMAIN_URL: volusion.com
- COMPLETE_URL: https://admin.volusion.com
- COMP_NAME: volusion
- GWEN_PATH: gwen001
- GIT_GRABER: gitgraber
- SCOPE: ''
- RUN_GITGRABBER: false 
+
  
 on: 
  push:
@@ -19,7 +12,6 @@ on:
 
 jobs:
  job1:
-  name: Github Recon 
   runs-on: ubuntu-latest
   strategy:
    matrix:
@@ -57,11 +49,5 @@ jobs:
      run : |
       cp -var ${{ github.workspace }}/config.py ${{ env.GIT_GRABER }}/   
       
-# subdomains
-   - name : run github-subdomains.py on ${{ env.DOMAIN_URL}}
-     if : env.SCOPE == '*'
-     run: |
-      cd ${{ github.workspace }}/${{ env.GWEN_PATH }}
-      python3 github-subdomains.py -d ${{ env.DOMAIN_URL}} -s
-      # python3 github-subdomains.py -d ${{ env.DOMAIN_URL}}
+
         
