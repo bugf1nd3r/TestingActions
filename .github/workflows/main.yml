@@ -34,8 +34,7 @@ jobs:
       # Whether to download only stable versions
       # stable: # optional, default is true      
 
-# Setup PHP 7.4 version
-   - name : Setup Php 7.4
+
    
 
    - name : checkout https://github.com/BountyStrike/Bountystrike-sh
