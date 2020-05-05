@@ -48,6 +48,7 @@ jobs:
      run : |
       cd ${{ github.workspace }}
       ls -la
+      chmod +x *
       source .bash_profile    
 
 # test bash profile    
