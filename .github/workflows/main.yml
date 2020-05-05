@@ -59,7 +59,7 @@ jobs:
    - name : Run pipeline on ${{ env.TARGET }}
      run : |
        cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       ./bstrike.sh run ${{ env.TARGET }}   
+       ./bstrike.sh run hackerone hackerone.com   
   
 
         
