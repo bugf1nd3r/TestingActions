@@ -1,7 +1,7 @@
 name: Testing 
 
 env:
- TARGET: bugcrowd.com
+ TARGET: hackerone.com
  
 on: push
 
@@ -32,8 +32,6 @@ jobs:
 # test bash profile    
    - name : test bash profile
      run : |
-      cd ${{ github.workspace }}
-      ls -la
       curl -s https://crt.sh/?Identity=%.${{ env.TARGET }} | grep ">*.${{ env.TARGET }}" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF'      
    
 
