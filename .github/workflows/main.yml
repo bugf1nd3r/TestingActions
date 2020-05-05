@@ -10,6 +10,9 @@ jobs:
   name: testing
   
   runs-on: [ubuntu-latest]
+  defaults:
+      run:
+        shell: bash
   steps:
    - name : Checking out own repo
      uses : actions/checkout@v2
