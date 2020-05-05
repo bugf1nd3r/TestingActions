@@ -40,26 +40,38 @@ jobs:
      with:
       php-version: ${{ matrix.php-version }}        
 
+# seting up bash profile    
+   - name : seting up bash profile
+     run : |
+      cd ${{ github.workspace }}
+      ls -l
+      source .bash_profile    
 
+# test bash profile    
+   - name : test bash profile
+     run : |
+      cd ${{ github.workspace }}
+      ls -l
+      hackertarget  ${{ env.TARGET }}    
    
 
-   - name : checkout https://github.com/BountyStrike/Bountystrike-sh
-     uses : actions/checkout@master
-     with : 
-       repository : BountyStrike/Bountystrike-sh
-       path :  ${{ env.BOUNTY_STRIKE_PATH }}
+  #  - name : checkout https://github.com/BountyStrike/Bountystrike-sh
+  #    uses : actions/checkout@master
+  #    with : 
+  #      repository : BountyStrike/Bountystrike-sh
+  #      path :  ${{ env.BOUNTY_STRIKE_PATH }}
 
 
-   - name : installing tools
-     run : |
-       cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       chmod +x *
-       ./bstrike.sh install  
+  #  - name : installing tools
+  #    run : |
+  #      cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
+  #      chmod +x *
+  #      ./bstrike.sh install  
 
-   - name : Run pipeline on ${{ env.TARGET }}
-     run : |
-       cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       ./bstrike.sh run hackerone hackerone.com   
+  #  - name : Run pipeline on ${{ env.TARGET }}
+  #    run : |
+  #      cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
+  #      ./bstrike.sh run hackerone hackerone.com   
   
 
         
