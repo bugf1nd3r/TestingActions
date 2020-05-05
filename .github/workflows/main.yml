@@ -51,8 +51,9 @@ jobs:
       cd ${{ github.workspace }}
       ls -la
       chmod +x *
-      mv .bash_profile ~/.bash_profile
-      source ~/.bash_profile    
+      #mv .bash_profile ~/.bash_profile
+      #source ~/.bash_profile    
+      echo .bash_profile >> ~/.bash_profile
       echo "--------------------------"
       cat ~/.bash_profile
 
