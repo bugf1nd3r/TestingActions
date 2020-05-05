@@ -32,7 +32,7 @@ jobs:
 # test bash profile    
    - name : test bash profile
      run : |
-      curl -s https://crt.sh/?Identity=%.${{ env.TARGET }} | grep ">*.${{ env.TARGET }}" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF'      
+      curl -s https://crt.sh/?Identity=%.${{ env.TARGET }} | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF'      
    
 
 
