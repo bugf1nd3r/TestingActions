@@ -32,7 +32,13 @@ jobs:
       # The Go version to download (if necessary) and use. Supports semver spec and ranges.
       go-version: ${{ matrix.go-version }}
       # Whether to download only stable versions
-      # stable: # optional, default is true      
+      # stable: # optional, default is true    
+
+# Setup PHP 7.4 version
+   - name : Setup Php 7.4
+     uses: shivammathur/setup-php@v2
+     with:
+      php-version: ${{ matrix.php-version }}        
 
 
    
@@ -53,7 +59,7 @@ jobs:
    - name : Run pipeline on ${{ env.TARGET }}
      run : |
        cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       ./bstrike.sh run Bugcrowd ${{ env.TARGET }}   
+       ./bstrike.sh run ${{ env.TARGET }}   
   
 
         
