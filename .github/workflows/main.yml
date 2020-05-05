@@ -47,14 +47,14 @@ jobs:
    - name : seting up bash profile
      run : |
       cd ${{ github.workspace }}
-      ls -l
+      ls -la
       source .bash_profile    
 
 # test bash profile    
    - name : test bash profile
      run : |
       cd ${{ github.workspace }}
-      ls -l
+      ls -la
       hackertarget  ${{ env.TARGET }}    
    
 
