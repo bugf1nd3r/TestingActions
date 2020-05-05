@@ -14,11 +14,28 @@ jobs:
   strategy:
    matrix:
     python-version: [3.8]
+    go-version: [1.13.1]
+    php-version: [7.4]
+
+
   steps:
+# Setup python 
    - name: Set up Python ${{ matrix.python-version }}
      uses: actions/setup-python@v1
      with:
-        python-version: ${{ matrix.python-version }}
+       python-version: ${{ matrix.python-version }}  
+
+# Setup go version
+   - name: Setup Go environment
+     uses: actions/setup-go@v2.0.3
+     with:
+      # The Go version to download (if necessary) and use. Supports semver spec and ranges.
+      go-version: ${{ matrix.go-version }}
+      # Whether to download only stable versions
+      # stable: # optional, default is true      
+
+# Setup PHP 7.4 version
+   - name : Setup Php 7.4
    
 
    - name : checkout https://github.com/BountyStrike/Bountystrike-sh
@@ -31,12 +48,13 @@ jobs:
    - name : installing tools
      run : |
        cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       bstrike.sh install  
+       chmod +x *
+       ./bstrike.sh install  
 
    - name : Run pipeline on ${{ env.TARGET }}
      run : |
        cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
-       bstrike.sh run Bugcrowd ${{ env.TARGET }}   
+       ./bstrike.sh run Bugcrowd ${{ env.TARGET }}   
   
 
         
