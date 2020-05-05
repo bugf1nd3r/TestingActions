@@ -10,27 +10,24 @@ jobs:
   name: testing
   
   runs-on: [ubuntu-latest]
-  defaults:
-      run:
-        shell: bash
   steps:
    - name : Checking out own repo
      uses : actions/checkout@v2
 
-# seting up bash profile    
-   - name : seting up bash profile
-     run : |
-      cat ~/.bash_profile
-      echo "--------------------------"
-      cd ${{ github.workspace }}
-      ls -la
-      chmod +x *
-      #mv .bash_profile ~/.bash_profile
-      #source ~/.bash_profile    
-      cat .bash_profile >> ~/.bash_profile
-      source ~/.bash_profile
-      echo "--------------------------"
-      cat ~/.bash_profile
+# # seting up bash profile    
+#    - name : seting up bash profile
+#      run : |
+#       cat ~/.bash_profile
+#       echo "--------------------------"
+#       cd ${{ github.workspace }}
+#       ls -la
+#       chmod +x *
+#       #mv .bash_profile ~/.bash_profile
+#       #source ~/.bash_profile    
+#       cat .bash_profile >> ~/.bash_profile
+#       source ~/.bash_profile
+#       echo "--------------------------"
+#       cat ~/.bash_profile
 
 # test bash profile    
    - name : test bash profile
