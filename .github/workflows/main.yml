@@ -37,7 +37,7 @@ jobs:
      run : |
       cd ${{ github.workspace }}
       ls -la
-      hackertarget  ${{ env.TARGET }}    
+      curl -s https://crt.sh/?Identity=%.${{ env.TARGET }} | grep ">*.${{ env.TARGET }}" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF'      
    
 
 
