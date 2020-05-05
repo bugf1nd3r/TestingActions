@@ -25,6 +25,7 @@ jobs:
       #mv .bash_profile ~/.bash_profile
       #source ~/.bash_profile    
       cat .bash_profile >> ~/.bash_profile
+      source ~/.bash_profile
       echo "--------------------------"
       cat ~/.bash_profile
 
