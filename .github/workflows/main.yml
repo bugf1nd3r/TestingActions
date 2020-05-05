@@ -8,7 +8,7 @@ on: push
 
 jobs:
  download_others_repo:
-  name: OpenRedireX - Asynchronous Open redirect Fuzzer for Humans
+  name: testing
   
   runs-on: [ubuntu-latest]
   strategy:
@@ -22,7 +22,7 @@ jobs:
    
 
    - name : checkout https://github.com/BountyStrike/Bountystrike-sh
-     uses : action/checkout@v2
+     uses : actions/checkout@master
      with : 
        repository : BountyStrike/Bountystrike-sh
        path :  ${{ env.BOUNTY_STRIKE_PATH }}
