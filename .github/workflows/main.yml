@@ -2,7 +2,8 @@
 name: Testing 
 
 env:
- TARGET: bugcrowd.com 
+ TARGET: bugcrowd.com
+ BOUNTY_STRIKE_PATH : strike 
  
 on: push
 
@@ -13,45 +14,30 @@ jobs:
   runs-on: [ubuntu-latest]
   strategy:
    matrix:
-    python-version: [3.7]
+    python-version: [3.8]
   steps:
    - name: Set up Python ${{ matrix.python-version }}
      uses: actions/setup-python@v1
      with:
         python-version: ${{ matrix.python-version }}
-   - name : checking git version
+   
+
+   - name : checkout https://github.com/BountyStrike/Bountystrike-sh
+     uses : action/checkout@v2
+     with : 
+       repository : BountyStrike/Bountystrike-sh
+       path :  ${{ env.BOUNTY_STRIKE_PATH }}
+
+
+   - name : installing tools
      run : |
-      git --version  
-   - name : installing dependencies - aiohttp
+       cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
+       bstrike.sh install  
+
+   - name : Run pipeline on ${{ env.TARGET }}
      run : |
-      pip3 install aiohttp
-  #  - name : installing jq
-  #    run : |
-  #     sudo apt-get install jq
-  #     go get -u github.com/tomnomnom/httprobe
-   - name: Downloading from https://github.com/devanshbatham/OpenRedireX
-     id: step1
-     run: |
-      git clone https://github.com/devanshbatham/OpenRedireX
-      cd OpenRedireX
-      python3 -m venv env
-      source env/bin/activate
-      python3.7 openredirex.py -u "https://${{ env.TARGET }}/?url=FUZZ" -p payloads.txt --keyword FUZZ
-   - name : Multiprocessing(Parallel)Subdomain Detect Script
-     run : |
-      git clone https://github.com/aboul3la/Sublist3r.git
-      cd Sublist3r
-      sudo pip install -r requirements.txt
-      python sublist3r.py -b -d ${{ env.TARGET }}
-   #- name : checking output of step1
-   #  run : ${{steps.step1.outputs}}
-  #  - name: oction-create-issue     
-  #    uses: maxkomarychev/oction-create-issue@v0.7.1
-  #    id: my_step_id
-  #    with:
-  #      token: ${{ secrets.GITHUB_TOKEN }}
-  #      title: ${{ env.TARGET }}
-  #      body:  html body <b>hell0 </b>
+       cd ${{ github.workspace }}/${{ env.BOUNTY_STRIKE_PATH }}
+       bstrike.sh run Bugcrowd ${{ env.TARGET }}    
   
 
   # security:
